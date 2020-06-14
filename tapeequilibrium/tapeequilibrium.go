@@ -1,4 +1,4 @@
-package tapeEquilibrium
+package tapeequilibrium
 
 // TapeEquilibrium splits the array in two parts at every index and calculates the difference between
 // the sum of all the elements of the left and the sum of all the elements to the right and returns
