@@ -44,9 +44,9 @@ func TestTapeEquilibrium(test *testing.T) {
 	})
 
 	test.Run("TestTapeEquilibrium - Small array some negatives some positives", func(t *testing.T) {
-		a := []int{-3, -1, 2, 4, -3}
+		a := []int{-10, -20, -30, -40, 100}
 		res := tapeequilibrium.TapeEquilibrium(a)
-		assert.Equal(t, 1, res)
+		assert.Equal(t, 20, res)
 	})
 
 	test.Run("TestTapeEquilibrium - 5050", func(t *testing.T) {
@@ -67,9 +67,9 @@ func TestTapeEquilibrium(test *testing.T) {
 		assert.Equal(t, 1998, res)
 	})
 
-	test.Run("TestTapeEquilibrium - Head of zeroes", func(t *testing.T) {
+	test.Run("TestTapeEquilibrium - Double", func(t *testing.T) {
 		a := []int{-1000, 1000}
 		res := tapeequilibrium.TapeEquilibrium(a)
-		assert.Equal(t, 0, res)
+		assert.Equal(t, 2000, res)
 	})
 }

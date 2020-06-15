@@ -4,21 +4,21 @@ package tapeequilibrium
 // the sum of all the elements of the left and the sum of all the elements to the right and returns
 // the smaller result
 // Solved in O(N)
-func TapeEquilibrium(a []int) int {
-	if a == nil || len(a) == 0 {
+func TapeEquilibrium(A []int) int {
+	if A == nil || len(A) == 0 {
 		return 0
 	}
 
 	total := 0
-	for _, value := range a {
+	for _, value := range A {
 		total += value
 	}
 
-	right := total - a[0]
-	left := a[0]
+	right := total - A[0]
+	left := A[0]
 	min := abs(right - left)
 
-	for _, value := range a[1:] {
+	for _, value := range A[1:len(A)-1] {
 		if min == 0 {
 			return 0
 		}
