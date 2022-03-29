@@ -2,26 +2,25 @@ package fibonaccisumodds
 
 // FibonacciSumOdds sums all the odd values that belongs to the fibonacci series that are less than a given value
 // Solution in O(N)
-func FibonacciSumOdds(n int) int {
-	if n == 0 {
+func FibonacciSumOdds(N int) int {
+	if N == 0 {
 		return 0
 	}
 
-	if n == 1 {
+	if N == 1 {
 		return 1
 	}
 
-	t1:=0
-	t2:=1
-	nextTerm:=0
-	sum := 1
-	for i := 2; t1 + t2 <= n; i++ {
-		nextTerm = t1 + t2
-		t1 = t2
-		t2 = nextTerm
+	previous := make(map[int]int)
+	previous[1] = 1
+	previous[2] = 1
 
-		if t2 % 2 != 0 {
-			sum += t2
+	sum := 2
+	for i := 3; previous[i-1]+previous[i-2] <= N; i++ {
+		fib := previous[i-1] + previous[i-2]
+		previous[i] = fib
+		if fib%2 != 0 {
+			sum += fib
 		}
 	}
 
