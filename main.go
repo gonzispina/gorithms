@@ -53,7 +53,7 @@ func main() {
 				"	t.Run(\"Test Solution N= \", func(t *testing.T) {\n",
 				fmt.Sprintf("		res := %s.Solution(0)\n", *packageName),
 				"		assert.Equal(t, ,res)\n",
-				"	}\n",
+				"	})\n",
 				"} \n",
 			},
 		},
