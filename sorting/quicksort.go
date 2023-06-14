@@ -8,7 +8,7 @@ func QuickSort(a []int) []int {
 		arr := pending[0]
 		pending = pending[1:]
 
-		if len(arr) == 1 {
+		if len(arr) <= 1 {
 			continue
 		} else if len(arr) == 2 {
 			if arr[0] > arr[1] {
@@ -17,20 +17,11 @@ func QuickSort(a []int) []int {
 			continue
 		}
 
-		max := 0
-		for i := 1; i < len(arr); i++ {
-			if arr[i] > arr[max] {
-				max = i
-			}
-		}
-
-		arr[max], arr[len(arr)-1] = arr[len(arr)-1], arr[max]
-		pivot := rand.Intn(len(arr) - 1)
-
+		pivot := rand.Intn(len(arr))
 		arr[0], arr[pivot] = arr[pivot], arr[0]
 
 		i := 0
-		j := len(arr) - 2
+		j := len(arr) - 1
 		for i <= j {
 			if arr[i] <= arr[0] {
 				i++
