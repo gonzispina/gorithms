@@ -7,6 +7,11 @@ import (
 
 func TestSolution(t *testing.T) {
 	t.Run("Test Solution N= ", func(t *testing.T) {
+		res := shortestPathBinaryMatrixRecursive([][]int{{0, 0, 0}, {1, 1, 0}, {1, 1, 0}})
+		assert.Equal(t, 4, res)
+	})
+
+	t.Run("Test Solution N= ", func(t *testing.T) {
 		res := shortestPathBinaryMatrix([][]int{{0, 0, 0}, {1, 1, 0}, {1, 1, 0}})
 		assert.Equal(t, 4, res)
 	})
