@@ -1,4 +1,4 @@
-package mergesort
+package sorting
 
 type SortingFunc func(a, b int) bool
 
