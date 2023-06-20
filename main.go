@@ -9,12 +9,17 @@ import (
 )
 
 var packageName = flag.String("package", "", "Name of the package to create")
+var functionName = flag.String("function", "", "Name of the function")
 
 func main() {
 	flag.Parse()
 
 	if *packageName == "" {
 		panic("package flag must be defined")
+	}
+
+	if *functionName == "" {
+		*functionName = "solution"
 	}
 
 	wd, _ := os.Getwd()
@@ -36,22 +41,21 @@ func main() {
 			fileName: path.Join(packagePath, fmt.Sprintf("%s.go", *packageName)),
 			lines: []string{
 				fmt.Sprintf("package %s \n\n", *packageName),
-				"func Solution(N int) int { \n\n",
+				fmt.Sprintf("func %s(N int) int { \n\n", *functionName),
 				"} \n",
 			},
 		},
 		"test": {
 			fileName: path.Join(packagePath, fmt.Sprintf("%s_test.go", *packageName)),
 			lines: []string{
-				fmt.Sprintf("package %s_test\n\n", *packageName),
+				fmt.Sprintf("package %s\n\n", *packageName),
 				"import (\n",
-				fmt.Sprintf("	\"github.com/gonzispina/gorithms/%s\"\n", *packageName),
 				"	\"github.com/stretchr/testify/assert\"\n",
 				"	\"testing\"\n",
 				")\n\n",
 				"func TestSolution(t *testing.T) { \n",
-				"	t.Run(\"Test Solution N= \", func(t *testing.T) {\n",
-				fmt.Sprintf("		res := %s.Solution(0)\n", *packageName),
+				"	t.Run(\"Test Solution\", func(t *testing.T) {\n",
+				fmt.Sprintf("		res := %s(0)\n", *functionName),
 				"		assert.Equal(t, ,res)\n",
 				"	})\n",
 				"} \n",
