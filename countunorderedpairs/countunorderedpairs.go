@@ -1,22 +1,22 @@
-package sorting
+package countunorderedpairs
 
-type SortingFunc func(a, b int) bool
-
-func MergeSort(a []int) []int {
+func count(a []int) ([]int, int) {
 	if len(a) <= 1 {
-		return []int{a[0]}
+		return []int{a[0]}, 0
 	}
 
 	if len(a) == 2 {
 		if a[0] > a[1] {
-			return []int{a[1], a[0]}
+			return []int{a[1], a[0]}, 1
 		}
-		return []int{a[0], a[1]}
+		return []int{a[0], a[1]}, 0
 	}
 
 	mid := len(a) / 2
-	left := MergeSort(a[0:mid])
-	right := MergeSort(a[mid:])
+	left, c1 := count(a[0:mid])
+	right, c2 := count(a[mid:])
+
+	counter := c1 + c2
 
 	i := 0
 	j := 0
@@ -25,27 +25,21 @@ func MergeSort(a []int) []int {
 		if i == len(left) {
 			res[c] = right[j]
 			j++
-			continue
 		} else if j == len(right) {
 			res[c] = left[i]
 			i++
-			continue
-		}
-
-		if left[i] < right[j] {
+		} else if left[i] < right[j] {
 			res[c] = left[i]
 			i++
 		} else if left[i] > right[j] {
 			res[c] = right[j]
+			counter += len(left) - i
 			j++
 		} else if left[i] == right[j] {
 			res[c] = left[i]
 			i++
-			c++
-			res[c] = right[j]
-			j++
 		}
 	}
 
-	return res
+	return res, counter
 }
