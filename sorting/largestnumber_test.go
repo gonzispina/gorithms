@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestInverseRadixSort(t *testing.T) {
+func TestLargestNumber(t *testing.T) {
 	t.Run("Test Solution A = 3, 9, 30, 34, 5", func(t *testing.T) {
 		arr := []int{3, 9, 30, 34, 5}
 		res := largestNumber(arr)
